@@ -4,8 +4,8 @@ let currentAudio = null;
 
 // Fetch both song dictionaries
 Promise.all([
-    fetch('file_to_index.json').then(response => response.json()),
-    fetch('index_to_file.json').then(response => response.json())
+    fetch('./assets/json/file_to_index.json').then(response => response.json()),
+    fetch('./assets/json/index_to_file.json').then(response => response.json())
 ]).then(([fileToIndex, indexToFile]) => {
     songDict = fileToIndex;
     fileToIndexDict = indexToFile;
@@ -54,7 +54,7 @@ function playSample(index) {
 
     const filename = fileToIndexDict[index];
     if (filename) {
-        const audioPath = `./samples/${filename}.mp3`; // Adjust path as necessary
+        const audioPath = `./assets/samples/${filename}.mp3`; // Adjust path as necessary
         currentAudio = new Audio(audioPath);
         currentAudio.play().catch(e => console.error("Error playing audio:", e));
     }
