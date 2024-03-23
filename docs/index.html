@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stevenage Bollywood Karaoke Chooser</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0; /* Plain background color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-header {
+            font-size: 20px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 2px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .result-list {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: 650px; /* Increased to show more items */
+            background-color: #fff; /* White background for the list */
+            border: 1px solid #ddd; /* Light grey border */
+            border-radius: 5px;
+        }
+        .result-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2px;
+            border-bottom: 1px solid #eee;
+        }
+        .result-item:last-child {
+            border-bottom: none; /* Remove bottom border for the last item */
+        }
+        .play-button {
+            white-space: nowrap; /* Prevents the play button text from wrapping */
+            flex-shrink: 0; /* Prevents the button from shrinking */
+            margin-right: 20px;
+        }
+        .song-title {
+            white-space: nowrap;
+            overflow: hidden;
+            flex-grow: 1;
+            flex-shrink: 1; /* Allows the title to shrink if necessary */
+            margin-right: 10px; /* Adjusts space between the song title and whatever may follow */
+        }
+        .song-index {
+            flex-shrink: 0; /* Prevents the index from shrinking, ensuring alignment */
+            margin-right: 2px;
+            width: 40px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">Stevenage Bollywood Karaoke Chooser</div>
+    <div class="search-box">
+        <input type="text" id="searchQuery" placeholder="Type part of a song title" oninput="searchSong()">
+    </div>
+    <ul id="searchResults" class="result-list"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
