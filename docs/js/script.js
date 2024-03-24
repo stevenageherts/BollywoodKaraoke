@@ -1,5 +1,5 @@
-let songDict = {};
-let fileToIndexDict = {};
+glet fileToIndexDict = {};
+let indexToFileDict = {};
 let currentAudio = null;
 
 // Fetch both song dictionaries
@@ -7,8 +7,8 @@ Promise.all([
     fetch('./assets/json/file_to_index.json').then(response => response.json()),
     fetch('./assets/json/index_to_file.json').then(response => response.json())
 ]).then(([fileToIndex, indexToFile]) => {
-    songDict = fileToIndex;
-    fileToIndexDict = indexToFile;
+    fileToIndexDict = fileToIndex;
+    indexToFileDict = indexToFile;
     searchSong(); // Display all songs initially
 }).catch(error => console.error('Error loading JSON:', error));
 
@@ -17,7 +17,7 @@ function searchSong() {
     const resultsElement = document.getElementById('searchResults');
     resultsElement.innerHTML = ''; // Clear previous results
 
-    let filteredSongs = Object.entries(songDict).filter(([song, _]) =>
+    let filteredSongs = Object.entries(fileToIndexDict).filter(([song, _]) =>
         query.trim() === '' || song.toLowerCase().includes(query)
     );
 
@@ -52,7 +52,7 @@ function playSample(index) {
         currentAudio = null;
     }
 
-    const filename = fileToIndexDict[index];
+    const filename = indexToFileDict[index];
     if (filename) {
         const audioPath = `./assets/samples/${filename}.mp3`; // Adjust path as necessary
         currentAudio = new Audio(audioPath);
