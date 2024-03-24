@@ -1,4 +1,4 @@
-glet fileToIndexDict = {};
+let fileToIndexDict = {};
 let indexToFileDict = {};
 let currentAudio = null;
 
